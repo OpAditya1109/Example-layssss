@@ -1,0 +1,771 @@
+@font-face {
+    font-family: MarkOT;
+    src: url(font/MarkOT.ttf);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;   
+
+}
+body{
+    font-family: MarkOT;
+    overflow: hidden;
+}
+
+/* loader-css-start */
+
+#loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: #181011;
+    overflow: hidden;
+    /* display: none; */
+
+}
+
+#loader #frame1 {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+}
+
+#loader #frame1 #ground-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; 
+}
+
+#loader #frame1 #potato-ground {
+    height: 80vh;
+    width: 50vw;
+    position: absolute;
+    object-fit: contain;
+    bottom: 2vw;
+}
+
+#loader #frame2 {
+    background-image: url('images/loader-images/green-floating-leaves-flying-leaves-picture.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+}
+
+#loader #frame2 .img1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 20vh;
+    width: 10vw;
+    object-fit: cover;
+}
+
+#loader #frame3 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#canvas-container {
+    width: 50vw; 
+    height: 80vh; 
+    overflow: hidden; 
+    position: relative;
+}
+
+#canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#loader #frame4 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+}
+
+#loader #frame4 video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+#loader #frame4 img {
+    position: absolute;
+    transform: scale(0);
+}
+
+.overlay {
+    position: fixed;
+    width: 100vw;
+    z-index: 4;
+    height: 100vh;
+    display: flex;
+}
+
+.bar {
+    width: 10vw;
+    height: 105vh;
+    background-color: #FBB915;
+}
+
+@media (max-width: 768px) {
+    #loader #frame1 #ground-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; 
+    }
+    #loader #frame1 #potato-ground {
+        height: 80vh;
+        width: 50vw;
+        position: absolute;
+        object-fit: contain;
+        bottom: 2vw;
+    }
+
+
+    #loader #frame2 .img1 {
+        height: 20vh;
+        width: 20vw;
+    }
+
+    #canvas-container {
+        width: 70vw; 
+        height: 60vh; 
+        
+    }
+}
+
+@media (max-width: 480px) {
+    
+    #loader #frame1 #ground-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; 
+    }
+
+    #loader #frame1 #potato-ground {
+        height: 80vh;
+        width: 50vw;
+        position: absolute;
+        object-fit: contain;
+        bottom: 2vw;
+    }
+
+    #loader #frame2 .img1 {
+        height: 20vh;
+        width: 36vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #canvas-container {
+        width: 80vw; 
+        height: 50vh; 
+    }
+
+    .bar {
+        width: 20vw;
+        height: 110vh;
+    }
+}
+/* loader-css-end */
+
+/* slider-css-start */
+.wrapper {
+    position: relative;
+    background-color: black;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 100%;
+    opacity: 1;
+   
+
+
+}
+
+#page-1 {
+    width: 100%;
+    height: 100vh;
+}
+
+nav {
+    width: 100%;
+    height: 20%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#nav-content {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 230, 0, 0.941);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: background-color 1s; /* Smooth color transition */
+    border: 1px solid white;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.838);
+    gap: 20px;
+    position: relative;
+}
+
+#nav-content img {
+    width: 8%;
+    height: 100%;
+}
+
+.ri-menu-line {
+    display: none;
+}
+.ri-search-line{
+    display: none;
+}
+
+#nav-content h1:hover {
+    width: 6%;
+    height: 40%;
+    text-align: center;
+    background-color: rgba(255, 38, 0, 0.758);
+    border-radius: 10%;
+    border-bottom: 2px solid white;
+    color: white;
+    cursor: pointer;
+    transition: width 0.5s, height 0.5s, background-color 0.5s, border-radius 0.5s, border-bottom 0.5s, color 0.5s;
+}
+
+#searchbar {
+    width: 15%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+.slider {
+    position: relative;
+    /* width: 100%; */
+    height: calc(100% - 24%);
+    /* background-color: red; */
+}
+
+.slider {
+    
+    overflow: hidden;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.838)
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 1s;
+}
+
+.btn {
+    text-align:center;
+    /* background-color: red; */
+    bottom: 1.8%;
+    position: relative;
+}
+.btn button {
+    transition: background-color 1s; /* Smooth color transition for buttons */
+    border-radius: 50%;
+    width: 1%;
+    height: 2vh;
+    box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.838);
+    
+}
+
+.btn button.active {
+    background-color: rgb(59, 194, 239); /* Initial color for active button */
+    color: #000;
+}
+
+.btn button.inactive {
+    background-color: white; /* Initial color for inactive buttons */
+    color: #000;
+}
+
+
+
+.slide{
+    width: 40%;
+    height: 100%;
+    object-fit: contain;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+/* slider-css-end */
+/* Receipe-start */
+.pg-2 {
+    padding-top:1% ;
+   
+    width: 100%;
+    height: 100vh;
+    background-color: #FCC70E;
+}
+
+.wrapper-recipe {
+    background-color: #FCC70E;
+    
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 100%;
+    transition: background-color 1s; /* Smooth color transition */
+  
+}
+#heading {
+    width: 100%;
+    height: 15%;
+    color: #000;
+
+}
+#heading h1 {
+    font-size: 5.5vw;
+}
+#items-container {
+    position: relative;
+    width: 100%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    height: calc(100% - 19%);
+
+    display: flex;
+    justify-content: space-between;
+    color: black;
+}
+.item {
+    position: relative;
+    width: 23%;
+    height: 100%;
+    overflow: hidden; /* Ensure content inside item doesn't overflow */
+    box-shadow: 5px 5px 15px black; /* Add shadow */
+    
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#item-1 {
+    position: relative;
+}
+.item-hover {
+    width: 100%;
+    height: 55%;
+    background-color: rgba(240, 248, 255, 0.58); /* Transparent background color */
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;  /* Initially hidden */
+    transition: opacity 0.3s ease;  /* Smooth transition for opacity */
+    font-size: 1.5rem;
+    color: #000;
+}
+.item:hover .item-hover {
+    opacity: 1;  /* Show on hover */
+}
+.item-hover b{
+    font-size: 3vw;
+    font-weight: 900;
+}
+.item-hover p{
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+.item-up {
+    width: 100%;
+    height: 55%;
+    background-color: bisque;
+}
+.item-bottom{
+    height: 100%;
+    background-color: rgba(255, 234, 0, 0.986);
+    
+}
+.first-it {
+    background-image: url(https://www.lays.com/sites/lays.com/files/LAY%E2%80%99S%20POTATO%20CHIP%20MAGIC%20BARS-023_1920x625.png);
+    object-fit: cover;
+    background-position: center;
+    
+}
+
+.second-it{
+    background-image: url(https://www.lays.com/sites/lays.com/files/LAY_SpicyFriedChickySammy_TWITTER_0.jpg);
+    object-fit: cover;
+    background-position: center;
+}
+.third-it{
+    background-image: url(https://www.lays.com/sites/lays.com/files/French%20Onion%20Meatballs-032_1200x1200_1.jpg);
+    object-fit: cover;
+    background-position: center;
+}
+.fourth-it{
+    background-image: url(https://www.lays.com/sites/lays.com/files/LAY%27S%20CRUSTED%20HOLIDAY%20BROWNIE-032_1920x625.png);
+    object-fit: cover;
+    background-position: center;
+}
+.item-bottom h1{
+    font-size: 3vw;
+    margin-left:10px ;
+ 
+}
+.item-bottom h2{
+    font-size: 1.5vw;
+    margin-top: 5%;
+    margin-left:10px ;
+}
+/* receipe -end */
+
+#sliderrrr{
+    height: 100%;
+    width: 100%;
+
+}
+#recipeeee{
+    height: 100%;
+    width: 100%;
+}
+
+/* products-css-start */
+#products_page {
+    height: 100%;
+    width: 100%;
+
+}
+
+.wrapp {
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+
+
+}
+
+#products .title {
+ 
+    position: relative;
+    background-color: #FCC70E;
+    font-size: 5vw;
+    font-family: MarkOT;
+    padding-left:3% ;
+    color: black;
+}
+
+.work {
+    display: flex;
+    background-color:  #FCC70E;
+    color: black;
+
+}
+
+.work-left {
+    position: relative;
+    width: 54%;
+    z-index: 2;
+}
+
+.work-text {
+    margin: auto;
+    width: 80%;
+}
+
+.work-info {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.work-left-b1 {
+    text-align: center;
+    font-family: MarkOT;
+}
+
+.work-left-b1 h1 {
+    font-size: 5vw;
+    font-weight: bold;
+}
+
+.work-left-b1 h2 {
+    font-size: 4vw;
+    font-weight: 300;
+}
+
+.work-left-b1 h3 {
+    font-size: 2vw;
+    font-weight: 300;
+}
+
+.work-right {
+    width: 40%;
+    height: auto;
+}
+
+.work-right-b1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: sticky;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+}
+
+.work-photo {
+    width: 40vw;
+    height: 40vw;
+    position: relative;
+}
+
+.work-photo-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.work-photo-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* products-ends-css */
+/* video-css */
+#videoo{
+
+    height: 100vh;
+    width: 100%;
+    background-color: #FCC70E;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.heading{
+    position: absolute;
+padding: 10px;
+height: 10%;
+width: 100%;
+color: black;
+padding-left:3% ;
+
+
+}
+.heading h1{
+    font-size: 5vw;
+}
+
+.center-text{
+width: 100vw;
+height: 100vh;
+position: absolute;
+color: black;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+
+
+}
+.center-text h1{
+    font-size: 5vw;
+    color: black;
+
+}
+#video-center{
+    height: 100%;
+    width: 100%;
+   position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+scale:0
+}
+
+#video-center video{
+
+height: 100%;
+width: 100%;
+object-fit:cover;
+}
+
+.center-text span{
+
+    display: inline-block ;
+}
+
+#page2{
+height: 100%;
+width: 100%;
+}
+
+/* footer-css-start */
+
+footer{
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: wheat;
+    position: relative; 
+}
+#footer-text{
+    position: relative;
+    z-index: 3;
+    padding: 20px 40px;
+    height: 45%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+#footer-text-left, #footer-text-right{
+    font-size: 0.7vw;
+    line-height: 2.5vw;
+}
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+}
+#footer-text-middle {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#textarea-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+textarea {
+    margin-top: 20px;
+    resize: none;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 20px;
+    height: 70px;
+    width: 60%;
+}
+button {
+    margin-top: 20px;
+    height: 70px;
+    width: 35%;
+    font-size: 1.2vw;
+    position: relative;
+    border-radius: 10px;
+    background-color: yellow;
+    color: black;
+}
+button .wave-char {
+    display: inline-block;
+}
+button i {
+    transition: transform 0.5s ease;
+    display: inline-block;
+}
+button:hover .wave-char {
+    animation: wave 1s;
+    animation-delay: calc(0.1s * var(--i));
+}
+/* button:hover i {
+    animation: 1s;
+    transform: rotate(45deg);
+} */
+button .wave-char:nth-child(1) { --i: 0; }
+button .wave-char:nth-child(2) { --i: 1; }
+button .wave-char:nth-child(3) { --i: 2; }
+button .wave-char:nth-child(4) { --i: 3; }
+button .wave-char:nth-child(5) { --i: 4; }
+button .wave-char:nth-child(6) { --i: 5; }
+button .wave-char:nth-child(7) { --i: 6; }
+button .wave-char:nth-child(8) { --i: 7; }
+button .wave-char:nth-child(9) { --i: 8; }
+#footer-rockstar-name {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+    width: 100%;
+    font-size: 27vw;
+    position: absolute;
+    padding-bottom: 20%;
+    z-index: 1;
+    white-space: nowrap;
+    font-family: lobster;
+}
+#copyrights {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 23%;
+    border-top: 1px solid white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 15px;
+    position: fixed;
+    color: #fff; /* Text color for copyright section */
+    gap: 5%;
+}
+
+.right-text-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 21px;
+    color: #fff; /* Adjusted color to ensure visibility on black background */
+}
+
+.right-text-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+.right-text-footer i{
+ 
+    font-size: 50px;
+}
+
+.right-text-footer a{
+    text-decoration: none; 
+    color: inherit; 
+}
